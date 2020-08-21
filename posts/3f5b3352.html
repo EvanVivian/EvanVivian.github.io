@@ -16,13 +16,15 @@
 <meta property="og:site_name" content="Evan">
 <meta property="og:description" content="Ubuntu 16.04 Install Gogs All ProcessGogs 是一款极易搭建的自助 Git 服务。Gogs">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190428/wx04-185422.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/wx04-185422.png">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190418/itchao.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/itchao.png">
-<meta property="og:updated_time" content="2020-08-19T05:23:53.467Z">
+<meta property="og:updated_time" content="2020-08-21T08:23:59.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Aliyun Ubuntu16.04 Gogs">
 <meta name="twitter:description" content="Ubuntu 16.04 Install Gogs All ProcessGogs 是一款极易搭建的自助 Git 服务。Gogs">
-<meta name="twitter:image" content="http://toko.v53922.com:7060/20200407/wx04-185422.png">
+<meta name="twitter:image" content="http://toko.v53922.com:7060/20190428/wx04-185422.png">
   
   
     <link rel="icon" href="/img/xhren.jpg">
@@ -233,7 +235,23 @@ var _hmt = _hmt || [];
 <p>访问 <a href="http://x.x.x.x:3000/install" rel="external nofollow noopener noreferrer" target="_blank">http://x.x.x.x:3000/install</a> 来完成首次运行的配置工作<br>页面上都有详细注释，这里不做详解<br><strong>安全建议，给gogs库创建相应的用户并设置密码，不用使用默认的root无密码状态</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> ALL <span class="keyword">ON</span> gogs.* <span class="keyword">TO</span> <span class="string">'gogs'</span>@<span class="string">'%'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'**********'</span>;</span><br><span class="line"><span class="keyword">flush</span> <span class="keyword">privileges</span>;</span><br></pre></td></tr></table></figure></p>
 <h2 id="Settings-Nginx"><a href="#Settings-Nginx" class="headerlink" title="Settings Nginx"></a>Settings Nginx</h2><p>/etc/nginx/nginx.conf</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    **********************</span><br><span class="line">    |~~~~~~~~~~~~~~~~~~~~|</span><br><span class="line">    **********************</span><br><span class="line">    </span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  gogs.itchao.win;</span><br><span class="line">        </span><br><span class="line">        location / &#123;</span><br><span class="line">             proxy_pass http://127.0.0.1:3000/;</span><br><span class="line">             proxy_redirect default;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    include    conf.d/www.conf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="http://toko.v53922.com:7060/20200407/wx04-185422.png" alt="WX04-185422.png"></p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a><img src="http://toko.v53922.com:7060/20190428/wx04-185422.png" alt="WX04-185422.png"></h1><p><img src="http://toko.v53922.com:7060/20200407/wx04-185422.png" alt="WX04-185422.png"></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>4265ded940122e851b1df522b7aac131b81596e1</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <h2 id="Extend-Hexo-Blog"><a href="#Extend-Hexo-Blog" class="headerlink" title="Extend Hexo Blog"></a>Extend Hexo Blog</h2><ul>
 <li><p>hexo 推送到Gogs仓库</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: </span><br><span class="line">      gogs: git@gogs.itchao.win:Evan/hexo.git</span><br></pre></td></tr></table></figure>
@@ -246,7 +264,23 @@ var _hmt = _hmt || [];
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">www.conf</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  www.itchao.win;</span><br><span class="line"></span><br><span class="line">	root         /var/www/html;</span><br><span class="line"></span><br><span class="line">	location / &#123;</span><br><span class="line">        index  index.html;</span><br><span class="line">        try_files $uri $uri/ /index.html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /var/www &amp;&amp; chown -R git. html </span><br><span class="line">nginx -t</span><br><span class="line">systemctl reload nginx.service</span><br></pre></td></tr></table></figure>
-<p><img src="http://toko.v53922.com:7060/20200407/itchao.png" alt="itchao.png"></p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<h1 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="http://toko.v53922.com:7060/20190418/itchao.png" alt="itchao.png"></h1><p><img src="http://toko.v53922.com:7060/20200407/itchao.png" alt="itchao.png"></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>4265ded940122e851b1df522b7aac131b81596e1</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <h2 id="Migration-amp-Upgrade"><a href="#Migration-amp-Upgrade" class="headerlink" title="Migration &amp; Upgrade"></a>Migration &amp; Upgrade</h2><p>本迁移或升级教程基于二进制安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#迁移</span><br><span class="line">mysqldump -ugogs -p  -B gogs &gt; gogs.sql           #回车输入密码备份gogs库数据</span><br><span class="line">tar zcf gogs.migra.gz gogs-repositories gogs.sql  #打包仓库及数据</span><br><span class="line">scp gogs.migra.gz NewServerIP:/home/git/      #把压缩包传到新服务器的Git家目录</span><br><span class="line"></span><br><span class="line">#新服务器上获取相应的二进制版本并解压</span><br><span class="line">wget https://dl.gogs.io/0.11.53/gogs_0.11.53_linux_amd64.tar.gz</span><br><span class="line">tar xf gogs_0.11.53_linux_amd64.tar.gz</span><br><span class="line">tar xf gogs.migra.gz</span><br><span class="line">$ ls</span><br><span class="line">gogs gogs.migra.gz gogs.sql gogs-repositories gogs_0.11.53_linux_amd64.tar.gz </span><br><span class="line"></span><br><span class="line">mysql -p &lt; gogs.sql</span><br><span class="line">\cp /home/git/gogs/scripts/systemd/gogs.service /etc/systemd/system/</span><br><span class="line">systemctl enable gogs.service</span><br><span class="line">systemctl start gogs.service</span><br><span class="line"></span><br><span class="line">#升级参考迁移步骤，变动之处就是下载新的二进制安装包并解压</span><br><span class="line">wget https://dl.gogs.io/$VERSION/gogs_$VERSION_$OS_$ARCH.tar.gz   （gogs_0.11.86_linux_amd64.tar.gz）</span><br><span class="line">tar xf gogs_$VERSION_$OS_$ARCH.tar.gz</span><br></pre></td></tr></table></figure></p>
 <h2 id="个人账户安全设置"><a href="#个人账户安全设置" class="headerlink" title="个人账户安全设置"></a>个人账户安全设置</h2><p> 用户设置 —&gt; 账户安全 —&gt; 两步验证<br> 用Google Authenticator 扫描  开启两步验证</p>
 
@@ -448,8 +482,8 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Init-The-required-Env"><span class="toc-number">1.</span> <span class="toc-text">Init The required Env</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-Gogs"><span class="toc-number">2.</span> <span class="toc-text">Install Gogs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Settings-Nginx"><span class="toc-number">3.</span> <span class="toc-text">Settings Nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Extend-Hexo-Blog"><span class="toc-number">4.</span> <span class="toc-text">Extend Hexo Blog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Migration-amp-Upgrade"><span class="toc-number">5.</span> <span class="toc-text">Migration &amp; Upgrade</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#个人账户安全设置"><span class="toc-number">6.</span> <span class="toc-text">个人账户安全设置</span></a></li></ol>
-                    </div>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Init-The-required-Env"><span class="toc-number">1.</span> <span class="toc-text">Init The required Env</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-Gogs"><span class="toc-number">2.</span> <span class="toc-text">Install Gogs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Settings-Nginx"><span class="toc-number">3.</span> <span class="toc-text">Settings Nginx</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number"></span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Extend-Hexo-Blog"><span class="toc-number">1.</span> <span class="toc-text">Extend Hexo Blog</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#-1"><span class="toc-number"></span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Migration-amp-Upgrade"><span class="toc-number">1.</span> <span class="toc-text">Migration &amp; Upgrade</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#个人账户安全设置"><span class="toc-number">2.</span> <span class="toc-text">个人账户安全设置</span></a></li></ol>
+                    </li></div>
                 </span>
             </div>
         </div>

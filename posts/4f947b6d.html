@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Evan">
 <meta property="og:description" content="默认情况下，gitlab使用自带的Nginx，占用80端口，这样就与系统原本安装的Nginx冲突。有完美的解决方案吗？当然！">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-08-19T05:23:53.467Z">
+<meta property="og:updated_time" content="2020-08-21T08:23:59.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gitlab 自带Nginx与原Nginx冲突的解决方案">
 <meta name="twitter:description" content="默认情况下，gitlab使用自带的Nginx，占用80端口，这样就与系统原本安装的Nginx冲突。有完美的解决方案吗？当然！">
@@ -235,10 +235,10 @@ var _hmt = _hmt || [];
 <p>允许gitlab-workhorse监听TCP（默认端口8181），编辑/etc/gitlab/gitlab.rb:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gitlab_workhorse[&apos;listen_network&apos;] = &quot;tcp&quot;</span><br><span class="line">gitlab_workhorse[&apos;listen_addr&apos;] = &quot;127.0.0.1:8181&quot;</span><br></pre></td></tr></table></figure></p>
 <p>运行 <code>sudo gitlab-ctl reconfigure</code> 使更改生效。</p>
 <ul>
-<li>通过系统原本安装的Nginx反代以便提供访问<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/nginx/conf.d/gitlab.conf </span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  gitlab.edevops.top;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root  html;</span><br><span class="line">        index index.html index.htm;</span><br><span class="line">        proxy_pass http://127.0.0.1:8181;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
+<li>通过系统原本安装的Nginx反代以便提供访问<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/nginx/conf.d/gitlab.conf </span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  gitlab.v53922.com;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root  html;</span><br><span class="line">        index index.html index.htm;</span><br><span class="line">        proxy_pass http://127.0.0.1:8181;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>访问：<a href="http://gitlab.edevops.top" rel="external nofollow noopener noreferrer" target="_blank">http://gitlab.edevops.top</a> 即可</p>
+<p>访问：<a href="http://gitlab.v53922.com" rel="external nofollow noopener noreferrer" target="_blank">http://gitlab.v53922.com</a> 即可</p>
 <p><a href="https://docs.gitlab.com/omnibus/settings/nginx.html" rel="external nofollow noopener noreferrer" target="_blank">参考</a></p>
 <h2 id="方案三：通过Docker安装Gitlab实现环境完全隔离"><a href="#方案三：通过Docker安装Gitlab实现环境完全隔离" class="headerlink" title="方案三：通过Docker安装Gitlab实现环境完全隔离"></a>方案三：通过Docker安装Gitlab实现环境完全隔离</h2><p><a href="https://docs.gitlab.com/omnibus/docker/" rel="external nofollow noopener noreferrer" target="_blank">docker安装gitlab官方文档</a></p>
 

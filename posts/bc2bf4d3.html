@@ -16,15 +16,19 @@
 <meta property="og:site_name" content="Evan">
 <meta property="og:description" content="N1刷完Linux，肯定是要各种折腾的，此文记录部分折腾过程及成果，分享给有需要的朋友参考。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190419/ariang.jpg">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/ariang.jpg">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190419/pidashboard.gif">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190419/rpim_status.png">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190419/rpim_statistics.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/pidashboard.gif">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/rpim_status.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/rpim_statistics.png">
-<meta property="og:updated_time" content="2020-08-19T05:59:43.595Z">
+<meta property="og:updated_time" content="2020-08-21T08:23:59.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Armbian_Ubuntu_18.04.2 一些有趣的玩法（一）">
 <meta name="twitter:description" content="N1刷完Linux，肯定是要各种折腾的，此文记录部分折腾过程及成果，分享给有需要的朋友参考。">
-<meta name="twitter:image" content="http://toko.v53922.com:7060/20200407/ariang.jpg">
+<meta name="twitter:image" content="http://toko.v53922.com:7060/20190419/ariang.jpg">
   
   
     <link rel="icon" href="/img/xhren.jpg">
@@ -235,13 +239,45 @@ var _hmt = _hmt || [];
 <h2 id="安装一些有趣的Server及Tools"><a href="#安装一些有趣的Server及Tools" class="headerlink" title="安装一些有趣的Server及Tools"></a>安装一些有趣的Server及Tools</h2><p>oh-my-zsh 不仅可以在Mac系统上使用，支持zsh的Ubuntu，Centos等Linux发行版也可以正常使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apt install wget zsh git</span><br><span class="line">sh -c &quot;$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&quot;</span><br><span class="line"></span><br><span class="line">#修改主题</span><br><span class="line">sed -i &quot;s#robbyrussell#ys#g&quot; ~/.zshrc &amp;&amp; source ~/.zshrc</span><br></pre></td></tr></table></figure></p>
 <p>aria2 一款不限速全平台下载利器<br>AriaNg是aria2很实用的在线管理面板<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">apt install aria2 nginx apache2-utils</span><br><span class="line">最新发布版本: https://github.com/mayswind/AriaNg/releases</span><br><span class="line">下载AriaNg-x.x.x.zip </span><br><span class="line">unzip AriaNg-1.0.3.zip</span><br><span class="line">mv AriaNg /var/www/html/</span><br><span class="line">chown -R www-data: AriaNg</span><br><span class="line"></span><br><span class="line">htpasswd -bc /etc/nginx/cert/htpasswd admin 123456</span><br><span class="line">(htpasswd命令出自apache2-utils，也可以使用htpasswd在线生成器生成htpasswd加密文件)</span><br><span class="line"></span><br><span class="line">aria2c --enable-rpc --rpc-listen-all --rpc-allow-origin-all --rpc-secret=itchao.win -c --dir /data -D</span><br></pre></td></tr></table></figure></p>
 <p>vim /etc/nginx/sites-enabled/default<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80 default_server;</span><br><span class="line"></span><br><span class="line">    root /var/www/html;</span><br><span class="line">    index index.html index.htm index.php default.php;</span><br><span class="line">    server_name _;</span><br><span class="line"></span><br><span class="line">    auth_basic &quot;Hello World&quot;;</span><br><span class="line">    auth_basic_user_file cert/htpasswd; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>通过 <a href="http://x.x.x.x/AriaNg" rel="external nofollow noopener noreferrer" target="_blank">http://x.x.x.x/AriaNg</a> 即可访问Aria Web前端<br><img src="http://toko.v53922.com:7060/20200407/ariang.jpg" alt="AriaNg.jpg"></p>
+<p>通过 <a href="http://x.x.x.x/AriaNg" rel="external nofollow noopener noreferrer" target="_blank">http://x.x.x.x/AriaNg</a> 即可访问Aria Web前端<br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a><img src="http://toko.v53922.com:7060/20190419/ariang.jpg" alt="AriaNg.jpg"></h1><p><img src="http://toko.v53922.com:7060/20200407/ariang.jpg" alt="AriaNg.jpg"></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>4265ded940122e851b1df522b7aac131b81596e1</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <p><strong>WebUi监控</strong><br>Pi Dashboard (Pi 仪表盘)，IoT 设备监控工具，提供 Web UI 仪表盘面板<br><a href="http://shumeipai.nxez.com/2017/08/31/pi-dashboard-released.html" rel="external nofollow noopener noreferrer" target="_blank">安装参考</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /var/www/html</span><br><span class="line">git clone https://github.com/spoonysonny/pi-dashboard.git PiM</span><br><span class="line">chown -R www-data: PiM</span><br><span class="line"></span><br><span class="line">apt-get install php7.2-json php7.2-intl php-imagick php7.2-xml php7.2 php7.2-cgi php7.2-fpm php7.2-cli php7.2-gd php7.2-curl php7.2-zip php7.2-mysql php7.2-mbstring php7.2-sqlite3 -y</span><br><span class="line"></span><br><span class="line">(此处安装如此多的PHP扩展是为下文showdoc及后续nextcloud、KodExplorer相关博文 做铺垫，单独安装Pi Dashboard不需要这么多插件)</span><br></pre></td></tr></table></figure></p>
 <p>vim /etc/php/7.2/fpm/pool.d/<a href="http://www.conf" rel="external nofollow noopener noreferrer" target="_blank">www.conf</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">;注释sock</span><br><span class="line">;listen = /run/php/php7.2-fpm.sock</span><br><span class="line">;监听9000端口</span><br><span class="line">listen = 127.0.0.1:9000</span><br><span class="line"></span><br><span class="line">systemctl restart php7.2-fpm.service</span><br><span class="line"></span><br><span class="line">$ lsof -i:9000                         </span><br><span class="line">COMMAND   PID     USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME</span><br><span class="line">php-fpm7. 536     root    7u  IPv4 1422173      0t0  TCP localhost:9000 (LISTEN)</span><br><span class="line">php-fpm7. 537 www-data    9u  IPv4 1422173      0t0  TCP localhost:9000 (LISTEN)</span><br><span class="line">php-fpm7. 538 www-data    9u  IPv4 1422173      0t0  TCP localhost:9000 (LISTEN)</span><br><span class="line">php-fpm7. 561 www-data    9u  IPv4 1422173      0t0  TCP localhost:9000 (LISTEN)</span><br></pre></td></tr></table></figure></p>
 <p>rpi-monitor====有历史记录的嵌入式设备实时监控程序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">apt install rpimonitor</span><br><span class="line"></span><br><span class="line">$ lsof -i:8888</span><br><span class="line">lsof: no pwd entry for UID 1000</span><br><span class="line">COMMAND    PID     USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME</span><br><span class="line">lsof: no pwd entry for UID 1000</span><br><span class="line">rpimonito 3849     1000    5u  IPv4 1550076      0t0  TCP *:8888 (LISTEN)</span><br></pre></td></tr></table></figure></p>
 <p>vim /etc/nginx/sites-enabled/default<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    ==========</span><br><span class="line">    ..........</span><br><span class="line">    **********</span><br><span class="line">    #(上边的符号省略是html部分，参考上文AriaNg处的配置即可)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    # pass PHP scripts to FastCGI server</span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        root /var/www/html;</span><br><span class="line">        include snippets/fastcgi-php.conf;</span><br><span class="line">        fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /RPiM &#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:8888;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>nginx -t<br>systemctl restart nginx.service</p>
-<p>访问 <a href="http://x.x.x.x/PiM" rel="external nofollow noopener noreferrer" target="_blank">http://x.x.x.x/PiM</a><br><img src="http://toko.v53922.com:7060/20200407/pidashboard.gif" alt="PiDashboard.gif"><br>访问 <a href="http://x.x.x.x/RPiM" rel="external nofollow noopener noreferrer" target="_blank">http://x.x.x.x/RPiM</a><br><img src="http://toko.v53922.com:7060/20200407/rpim_status.png" alt="RPiM_status.png"><br><img src="http://toko.v53922.com:7060/20200407/rpim_statistics.png" alt="RPiM_statistics.png"></p>
+<p>访问 <a href="http://x.x.x.x/PiM" rel="external nofollow noopener noreferrer" target="_blank">http://x.x.x.x/PiM</a><br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<br><img src="http://toko.v53922.com:7060/20190419/pidashboard.gif" alt="PiDashboard.gif"><br>访问 <a href="http://x.x.x.x/RPiM" rel="external nofollow noopener noreferrer" target="_blank">http://x.x.x.x/RPiM</a><br><img src="http://toko.v53922.com:7060/20190419/rpim_status.png" alt="RPiM_status.png"></p>
+<h1 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="http://toko.v53922.com:7060/20190419/rpim_statistics.png" alt="RPiM_statistics.png"></h1><p><img src="http://toko.v53922.com:7060/20200407/pidashboard.gif" alt="PiDashboard.gif"><br>访问 <a href="http://x.x.x.x/RPiM" rel="external nofollow noopener noreferrer" target="_blank">http://x.x.x.x/RPiM</a><br><img src="http://toko.v53922.com:7060/20200407/rpim_status.png" alt="RPiM_status.png"><br><img src="http://toko.v53922.com:7060/20200407/rpim_statistics.png" alt="RPiM_statistics.png"></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>4265ded940122e851b1df522b7aac131b81596e1</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <p><strong>ShowDoc</strong><br>ShowDoc是一款很棒的在线API文档、技术文档工具。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /var/www/html</span><br><span class="line">git clone https://github.com/star7th/showdoc.git SDoc</span><br><span class="line"></span><br><span class="line">chmod -R  www-data: SDoc</span><br></pre></td></tr></table></figure></p>
 <p>nginx 配置文件可共用<code>Pi Dashboard</code>的<br>访问 <a href="http://x.x.x.x/SDoc" rel="external nofollow noopener noreferrer" target="_blank">http://x.x.x.x/SDoc</a> ，第一次会自动跳转到 install 界面，选择语言后即可安装完成，初始账号为showdoc，密码 123456 。</p>
 
@@ -435,8 +471,8 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#初始优化"><span class="toc-number">1.</span> <span class="toc-text">初始优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装一些有趣的Server及Tools"><span class="toc-number">2.</span> <span class="toc-text">安装一些有趣的Server及Tools</span></a></li></ol>
-                    </div>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#初始优化"><span class="toc-number">1.</span> <span class="toc-text">初始优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装一些有趣的Server及Tools"><span class="toc-number">2.</span> <span class="toc-text">安装一些有趣的Server及Tools</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number"></span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#-1"><span class="toc-number"></span> <span class="toc-text"></span></a>
+                    </li></div>
                 </span>
             </div>
         </div>

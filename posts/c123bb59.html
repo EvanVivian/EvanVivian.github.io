@@ -16,17 +16,23 @@
 <meta property="og:site_name" content="Evan">
 <meta property="og:description" content="本文记录Armbian_Ubuntu_18.04.2上两款使用MySQL数据库的Server,并设置ssh无密码登录。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190419/xshell_rsa1.png">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190419/xshell_rsa2.png">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190419/xshell_rsa3.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/xshell_rsa1.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/xshell_rsa2.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/xshell_rsa3.png">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190419/tok0.jpg">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190419/tok.jpg">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/tok0.jpg">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/tok.jpg">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190429/gogs.jpg">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/gogs.jpg">
-<meta property="og:updated_time" content="2020-08-19T05:59:43.599Z">
+<meta property="og:updated_time" content="2020-08-21T08:23:59.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Armbian_Ubuntu_18.04.2 一些有趣的玩法（三）">
 <meta name="twitter:description" content="本文记录Armbian_Ubuntu_18.04.2上两款使用MySQL数据库的Server,并设置ssh无密码登录。">
-<meta name="twitter:image" content="http://toko.v53922.com:7060/20200407/xshell_rsa1.png">
+<meta name="twitter:image" content="http://toko.v53922.com:7060/20190419/xshell_rsa1.png">
   
   
     <link rel="icon" href="/img/xhren.jpg">
@@ -232,10 +238,42 @@ var _hmt = _hmt || [];
       
         <p>本文记录Armbian_Ubuntu_18.04.2上两款使用MySQL数据库的Server,并设置ssh无密码登录。<br><a id="more"></a></p>
 <h2 id="设置ssh秘钥登录并禁止密码登录"><a href="#设置ssh秘钥登录并禁止密码登录" class="headerlink" title="设置ssh秘钥登录并禁止密码登录"></a>设置ssh秘钥登录并禁止密码登录</h2><p><strong>命令行一键生成秘钥对并设置</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t dsa -P &apos;&apos; -f ~/.ssh/id_dsa &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">cat ~/.ssh/id_dsa.pub &gt;&gt; ~/.ssh/authorized_keys</span><br><span class="line">chmod 600 ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure></p>
-<p>通过scp、sz(lrzsz)等命令拷贝或下载 <code>~/.ssh/id_dsa</code> 私钥到客户端主机上，以便使用。或通过 Xftp、winscp等图形界面下载私钥<br><strong>Xshell生成秘钥</strong><br><img src="http://toko.v53922.com:7060/20200407/xshell_rsa1.png" alt="xshell_rsa1.png"><img src="http://toko.v53922.com:7060/20200407/xshell_rsa2.png" alt="xshell_rsa2.png"><br>保存为  authorized_keys<br><img src="http://toko.v53922.com:7060/20200407/xshell_rsa3.png" alt="xshell_rsa3.png"></p>
+<p>通过scp、sz(lrzsz)等命令拷贝或下载 <code>~/.ssh/id_dsa</code> 私钥到客户端主机上，以便使用。或通过 Xftp、winscp等图形界面下载私钥<br><strong>Xshell生成秘钥</strong><br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<br><img src="http://toko.v53922.com:7060/20190419/xshell_rsa1.png" alt="xshell_rsa1.png"><img src="http://toko.v53922.com:7060/20190419/xshell_rsa2.png" alt="xshell_rsa2.png"><br>保存为  authorized_keys</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a><img src="http://toko.v53922.com:7060/20190419/xshell_rsa3.png" alt="xshell_rsa3.png"></h1><p><img src="http://toko.v53922.com:7060/20200407/xshell_rsa1.png" alt="xshell_rsa1.png"><img src="http://toko.v53922.com:7060/20200407/xshell_rsa2.png" alt="xshell_rsa2.png"><br>保存为  authorized_keys<br><img src="http://toko.v53922.com:7060/20200407/xshell_rsa3.png" alt="xshell_rsa3.png"></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>4265ded940122e851b1df522b7aac131b81596e1</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <p><strong>开启秘钥登录，关闭密码登录</strong><br>vim /etc/ssh/sshd_config<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#禁止密码登录</span><br><span class="line">PasswordAuthentication no</span><br><span class="line">#开启秘钥等</span><br><span class="line">PubkeyAuthentication yes</span><br></pre></td></tr></table></figure></p>
 <p>systemctl restart ssh.service  (重启ssh服务生效)</p>
-<h2 id="开源图床服务安装"><a href="#开源图床服务安装" class="headerlink" title="开源图床服务安装"></a>开源图床服务安装</h2><p>Lsky Pro是一款基于 PHP+mysql 开发的图床系统，开源免费。面向技术博客、个人博客、简书等支持 markdown 的平台等。 同样可作为云上相册使用，支持图片多图上传、拖拽上传、上传预览、全屏预览，限制游客上传等。<br>详情访问：<a href="https://www.lsky.pro/" rel="external nofollow noopener noreferrer" target="_blank">https://www.lsky.pro/</a><br>演示地址：<a href="https://pic.iqy.ink/" rel="external nofollow noopener noreferrer" target="_blank">https://pic.iqy.ink/</a><br><img src="http://toko.v53922.com:7060/20200407/tok0.jpg" alt="ToK0.jpg"><br><img src="http://toko.v53922.com:7060/20200407/tok.jpg" alt="ToK.jpg"><br><strong>安装MySQL并建库</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt install mysql-server</span><br><span class="line">mysql -uroot -p -e &quot;create database Toko&quot;</span><br><span class="line">mysql -uroot -p -e &quot;grant all on Toko.* to &apos;Toko&apos;@&apos;%&apos; identified by &apos;iTchaoToK&apos;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="开源图床服务安装"><a href="#开源图床服务安装" class="headerlink" title="开源图床服务安装"></a>开源图床服务安装</h2><p>Lsky Pro是一款基于 PHP+mysql 开发的图床系统，开源免费。面向技术博客、个人博客、简书等支持 markdown 的平台等。 同样可作为云上相册使用，支持图片多图上传、拖拽上传、上传预览、全屏预览，限制游客上传等。<br>详情访问：<a href="https://www.lsky.pro/" rel="external nofollow noopener noreferrer" target="_blank">https://www.lsky.pro/</a><br>演示地址：<a href="https://pic.iqy.ink/" rel="external nofollow noopener noreferrer" target="_blank">https://pic.iqy.ink/</a><br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<br><img src="http://toko.v53922.com:7060/20190419/tok0.jpg" alt="ToK0.jpg"></p>
+<h1 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="http://toko.v53922.com:7060/20190419/tok.jpg" alt="ToK.jpg"></h1><p><img src="http://toko.v53922.com:7060/20200407/tok0.jpg" alt="ToK0.jpg"><br><img src="http://toko.v53922.com:7060/20200407/tok.jpg" alt="ToK.jpg"></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>4265ded940122e851b1df522b7aac131b81596e1<br><strong>安装MySQL并建库</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt install mysql-server</span><br><span class="line">mysql -uroot -p -e &quot;create database Toko&quot;</span><br><span class="line">mysql -uroot -p -e &quot;grant all on Toko.* to &apos;Toko&apos;@&apos;%&apos; identified by &apos;iTchaoToK&apos;;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <p><strong>安装Lsky图床</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /var/www/</span><br><span class="line">git clone https://github.com/wisp-x/lsky-pro.git Toko</span><br><span class="line">chown -R www-data: /var/www/Toko</span><br></pre></td></tr></table></figure></p>
 <p>vim /etc/nginx/conf.d/Toko.conf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line">    root   /var/www/Toko/public;</span><br><span class="line">    index  index.php index.html index.htm;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    client_max_body_size 512M;</span><br><span class="line">    fastcgi_buffers 64 4K;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        if (!-e $request_filename) &#123;</span><br><span class="line">            rewrite ^(.*)$ /index.php?s=$1 last; break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ \.php &#123;</span><br><span class="line">        fastcgi_pass  127.0.0.1:9000;</span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        include fastcgi.conf;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>重启NGINX  <code>systemctl restart nginx.service</code> ,访问 <a href="http://x.x.x.x" rel="external nofollow noopener noreferrer" target="_blank">http://x.x.x.x</a> 按照页面指示设置 即可安装成功</p>
@@ -243,7 +281,23 @@ var _hmt = _hmt || [];
 <p>N1 Armbian_Ubuntu_18 上安装MySQL数据库(参考上边)，导入数据并授权。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p &lt; gogs.sql</span><br><span class="line">mysql -uroot -p -e &quot;GRANT ALL ON gogs.* TO &apos;gogs&apos;@&apos;%&apos; IDENTIFIED BY &apos;**********&apos;;&quot;</span><br></pre></td></tr></table></figure></p>
 <p><strong>下载arm版gogs并安装</strong><br>不要下载树莓派版本！不要下载树莓派版本！不要下载树莓派版本！(gogs_x.xx.xx_raspi2_armv6.zip)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">useradd git</span><br><span class="line">mkdir -p /home/git</span><br><span class="line">chown -R git: /home/git</span><br><span class="line">cd /home/git</span><br><span class="line">wget https://dl.gogs.io/0.11.86/gogs_0.11.86_linux_armv5.zip</span><br><span class="line">unzip gogs_0.11.86_linux_armv5.zip</span><br><span class="line">\cp /home/git/gogs/scripts/systemd/gogs.service /etc/systemd/system/</span><br><span class="line"></span><br><span class="line">systemctl start gogs.service</span><br><span class="line">systemctl status gogs.service</span><br><span class="line">lsof -i:3000</span><br></pre></td></tr></table></figure></p>
 <p>访问 <a href="http://x.x.x.x:3000" rel="external nofollow noopener noreferrer" target="_blank">http://x.x.x.x:3000</a> 设置数据库连接及仓库路径即可访问</p>
-<p><img src="http://toko.v53922.com:7060/20200407/gogs.jpg" alt="gogs.jpg"></p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<h1 id="-2"><a href="#-2" class="headerlink" title=""></a><img src="http://toko.v53922.com:7060/20190429/gogs.jpg" alt="gogs.jpg"></h1><p><img src="http://toko.v53922.com:7060/20200407/gogs.jpg" alt="gogs.jpg"></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>4265ded940122e851b1df522b7aac131b81596e1</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 
       
 
@@ -426,8 +480,8 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#设置ssh秘钥登录并禁止密码登录"><span class="toc-number">1.</span> <span class="toc-text">设置ssh秘钥登录并禁止密码登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开源图床服务安装"><span class="toc-number">2.</span> <span class="toc-text">开源图床服务安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arm版gogs安装"><span class="toc-number">3.</span> <span class="toc-text">Arm版gogs安装</span></a></li></ol>
-                    </div>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#设置ssh秘钥登录并禁止密码登录"><span class="toc-number">1.</span> <span class="toc-text">设置ssh秘钥登录并禁止密码登录</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number"></span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#开源图床服务安装"><span class="toc-number">1.</span> <span class="toc-text">开源图床服务安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#-1"><span class="toc-number"></span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Arm版gogs安装"><span class="toc-number">1.</span> <span class="toc-text">Arm版gogs安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#-2"><span class="toc-number"></span> <span class="toc-text"></span></a>
+                    </li></div>
                 </span>
             </div>
         </div>

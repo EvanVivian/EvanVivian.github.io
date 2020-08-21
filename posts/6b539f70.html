@@ -16,6 +16,14 @@
 <meta property="og:site_name" content="Evan">
 <meta property="og:description" content="Walle是一款不错的部署系统：简单、稳定、权限完整、高级任务。 2019年02月21日17:49:21 更新此文 walle之PHP版本 tag v1.2.0">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190428/walle-env.png">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190428/wx20180831-135909.png">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190428/wx20180831-140029.png">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190428/wx20180831-141505.png">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190428/wx20180831-141552.png">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190428/wx20180831-141639.png">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190428/wx20180831-141755.png">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190428/wx20180831-140213.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/walle-env.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/wx20180831-135909.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/wx20180831-140029.png">
@@ -24,11 +32,11 @@
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/wx20180831-141639.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/wx20180831-141755.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/wx20180831-140213.png">
-<meta property="og:updated_time" content="2020-08-19T05:23:53.467Z">
+<meta property="og:updated_time" content="2020-08-21T08:23:59.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="部署系统之Walle">
 <meta name="twitter:description" content="Walle是一款不错的部署系统：简单、稳定、权限完整、高级任务。 2019年02月21日17:49:21 更新此文 walle之PHP版本 tag v1.2.0">
-<meta name="twitter:image" content="http://toko.v53922.com:7060/20200407/walle-env.png">
+<meta name="twitter:image" content="http://toko.v53922.com:7060/20190428/walle-env.png">
   
   
     <link rel="icon" href="/img/xhren.jpg">
@@ -242,7 +250,23 @@ var _hmt = _hmt || [];
 <p>4.初始化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -sS https://getcomposer.org/installer | php</span><br><span class="line">mv composer.phar /usr/local/bin/composer</span><br><span class="line">composer install --prefer-dist --no-dev --optimize-autoloader -vvvv</span><br><span class="line"></span><br><span class="line">./yii walle/setup  # 需要输入 yes</span><br></pre></td></tr></table></figure></p>
 <p>5.配置nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/nginx.conf</span><br><span class="line">http &#123;</span><br><span class="line">    。。。。。。</span><br><span class="line">    。。。。。。</span><br><span class="line">    include /etc/nginx/conf.d/*.conf;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">cat /etc/nginx/conf.d/walle.conf</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name localhost;</span><br><span class="line"></span><br><span class="line">    root /data/www/walle-web/web;</span><br><span class="line">    index index.php;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files $uri $uri/ /index.php$is_args$args;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        try_files $uri = 404;</span><br><span class="line">        fastcgi_split_path_info ^(.+\.php)(/.+)$;</span><br><span class="line">        fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>6.启动应用并访问<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">systemctl start nginx</span><br><span class="line">systemctl start php-fpm</span><br><span class="line"></span><br><span class="line">systemctl enable nginx</span><br><span class="line">systemctl enable php-fpm </span><br><span class="line"></span><br><span class="line">访问地址：localhost</span><br><span class="line">默认管理员账号密码 admin admin</span><br></pre></td></tr></table></figure></p>
-<h2 id="Extension"><a href="#Extension" class="headerlink" title="Extension"></a>Extension</h2><p>walle使用方法备忘<br><img src="http://toko.v53922.com:7060/20200407/walle-env.png" alt="walle-env.png"><br><img src="http://toko.v53922.com:7060/20200407/wx20180831-135909.png" alt="WX20180831-135909.png"><br><img src="http://toko.v53922.com:7060/20200407/wx20180831-140029.png" alt="WX20180831-140029.png"><br><img src="http://toko.v53922.com:7060/20200407/wx20180831-141505.png" alt="WX20180831-141505.png"><br><img src="http://toko.v53922.com:7060/20200407/wx20180831-141552.png" alt="WX20180831-141552.png"><br><img src="http://toko.v53922.com:7060/20200407/wx20180831-141639.png" alt="WX20180831-141639.png"><br><img src="http://toko.v53922.com:7060/20200407/wx20180831-141755.png" alt="WX20180831-141755.png"><br><img src="http://toko.v53922.com:7060/20200407/wx20180831-140213.png" alt="WX20180831-140213.png"></p>
+<h2 id="Extension"><a href="#Extension" class="headerlink" title="Extension"></a>Extension</h2><p>walle使用方法备忘<br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<br><img src="http://toko.v53922.com:7060/20190428/walle-env.png" alt="walle-env.png"><br><img src="http://toko.v53922.com:7060/20190428/wx20180831-135909.png" alt="WX20180831-135909.png"><br><img src="http://toko.v53922.com:7060/20190428/wx20180831-140029.png" alt="WX20180831-140029.png"><br><img src="http://toko.v53922.com:7060/20190428/wx20180831-141505.png" alt="WX20180831-141505.png"><br><img src="http://toko.v53922.com:7060/20190428/wx20180831-141552.png" alt="WX20180831-141552.png"><br><img src="http://toko.v53922.com:7060/20190428/wx20180831-141639.png" alt="WX20180831-141639.png"><br><img src="http://toko.v53922.com:7060/20190428/wx20180831-141755.png" alt="WX20180831-141755.png"></p>
+<h1 id=""><a href="#" class="headerlink" title=""></a><img src="http://toko.v53922.com:7060/20190428/wx20180831-140213.png" alt="WX20180831-140213.png"></h1><p><img src="http://toko.v53922.com:7060/20200407/walle-env.png" alt="walle-env.png"><br><img src="http://toko.v53922.com:7060/20200407/wx20180831-135909.png" alt="WX20180831-135909.png"><br><img src="http://toko.v53922.com:7060/20200407/wx20180831-140029.png" alt="WX20180831-140029.png"><br><img src="http://toko.v53922.com:7060/20200407/wx20180831-141505.png" alt="WX20180831-141505.png"><br><img src="http://toko.v53922.com:7060/20200407/wx20180831-141552.png" alt="WX20180831-141552.png"><br><img src="http://toko.v53922.com:7060/20200407/wx20180831-141639.png" alt="WX20180831-141639.png"><br><img src="http://toko.v53922.com:7060/20200407/wx20180831-141755.png" alt="WX20180831-141755.png"><br><img src="http://toko.v53922.com:7060/20200407/wx20180831-140213.png" alt="WX20180831-140213.png"></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>4265ded940122e851b1df522b7aac131b81596e1</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 
       
 
@@ -438,8 +462,8 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基于CentOS7安装"><span class="toc-number">1.</span> <span class="toc-text">基于CentOS7安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Extension"><span class="toc-number">2.</span> <span class="toc-text">Extension</span></a></li></ol>
-                    </div>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基于CentOS7安装"><span class="toc-number">1.</span> <span class="toc-text">基于CentOS7安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Extension"><span class="toc-number">2.</span> <span class="toc-text">Extension</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number"></span> <span class="toc-text"></span></a>
+                    </li></div>
                 </span>
             </div>
         </div>

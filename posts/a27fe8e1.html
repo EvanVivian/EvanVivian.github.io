@@ -16,13 +16,15 @@
 <meta property="og:site_name" content="Evan">
 <meta property="og:description" content="JDK是 Java 语言的软件开发工具包。JDK是整个java开发的核心，它包含了JAVA的运行环境（JVM + Java系统类库）和 JAVA工具。Tomcat 是一个免费的开放源代码的Web 应用服务器，属于轻量级应用服务器，是开发和调试JSP 程序的首选 。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190418/jdk8.png">
+<meta property="og:image" content="http://toko.v53922.com:7060/20190418/jdk8u201.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/jdk8.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/jdk8u201.png">
-<meta property="og:updated_time" content="2020-08-19T05:59:43.599Z">
+<meta property="og:updated_time" content="2020-08-21T08:23:59.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux下Java &amp; Tomcat 环境搭建">
 <meta name="twitter:description" content="JDK是 Java 语言的软件开发工具包。JDK是整个java开发的核心，它包含了JAVA的运行环境（JVM + Java系统类库）和 JAVA工具。Tomcat 是一个免费的开放源代码的Web 应用服务器，属于轻量级应用服务器，是开发和调试JSP 程序的首选 。">
-<meta name="twitter:image" content="http://toko.v53922.com:7060/20200407/jdk8.png">
+<meta name="twitter:image" content="http://toko.v53922.com:7060/20190418/jdk8.png">
   
   
     <link rel="icon" href="/img/xhren.jpg">
@@ -227,7 +229,23 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>JDK是 Java 语言的软件开发工具包。JDK是整个java开发的核心，它包含了JAVA的运行环境（JVM + Java系统类库）和 JAVA工具。<br>Tomcat 是一个免费的开放源代码的Web 应用服务器，属于轻量级应用服务器，是开发和调试JSP 程序的首选 。<br><a id="more"></a></p>
-<h2 id="Java环境搭建"><a href="#Java环境搭建" class="headerlink" title="Java环境搭建"></a>Java环境搭建</h2><p><a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html" rel="external nofollow noopener noreferrer" target="_blank">JDK官网</a><br>打开页面后选择 Java SE 8u201 / Java SE 8u202 点击进入jdk 8 的下载页面<br><img src="http://toko.v53922.com:7060/20200407/jdk8.png" alt="jdk8.png"><br>Java SE Development Kit 8u201 —&gt; 选择 Accept License Agreement<br>点击 jdk-8u201-linux-x64.tar.gz 开始下载<br><img src="http://toko.v53922.com:7060/20200407/jdk8u201.png" alt="jdk8u201.png"></p>
+<h2 id="Java环境搭建"><a href="#Java环境搭建" class="headerlink" title="Java环境搭建"></a>Java环境搭建</h2><p><a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html" rel="external nofollow noopener noreferrer" target="_blank">JDK官网</a><br>打开页面后选择 Java SE 8u201 / Java SE 8u202 点击进入jdk 8 的下载页面<br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<br><img src="http://toko.v53922.com:7060/20190418/jdk8.png" alt="jdk8.png"><br>Java SE Development Kit 8u201 —&gt; 选择 Accept License Agreement<br>点击 jdk-8u201-linux-x64.tar.gz 开始下载</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a><img src="http://toko.v53922.com:7060/20190418/jdk8u201.png" alt="jdk8u201.png"></h1><p><img src="http://toko.v53922.com:7060/20200407/jdk8.png" alt="jdk8.png"><br>Java SE Development Kit 8u201 —&gt; 选择 Accept License Agreement<br>点击 jdk-8u201-linux-x64.tar.gz 开始下载<br><img src="http://toko.v53922.com:7060/20200407/jdk8u201.png" alt="jdk8u201.png"></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>4265ded940122e851b1df522b7aac131b81596e1</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <p>把下载好的 jdk-8u201-linux-x64.tar.gz 上传到相应服务器上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tar xf jdk-8u201-linux-x64.tar.gz -C /usr/local/</span><br><span class="line"></span><br><span class="line">vim /etc/profile 添加如下内容</span><br><span class="line"></span><br><span class="line">export JAVA_HOME=/usr/local/jdk1.8.0_201</span><br><span class="line">export JRE_HOME=/usr/local/jdk1.8.0_201/jre</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line">export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH</span><br></pre></td></tr></table></figure></p>
 <p>source /etc/profile</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#检查</span><br><span class="line">$ java -version</span><br><span class="line">java version &quot;1.8.0_201&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_201-b09)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.201-b09, mixed mode)</span><br></pre></td></tr></table></figure>
@@ -425,8 +443,8 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java环境搭建"><span class="toc-number">1.</span> <span class="toc-text">Java环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tomcat-8-5-安装"><span class="toc-number">2.</span> <span class="toc-text">Tomcat 8.5 安装</span></a></li></ol>
-                    </div>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java环境搭建"><span class="toc-number">1.</span> <span class="toc-text">Java环境搭建</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number"></span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Tomcat-8-5-安装"><span class="toc-number">1.</span> <span class="toc-text">Tomcat 8.5 安装</span></a></li></ol>
+                    </li></div>
                 </span>
             </div>
         </div>
