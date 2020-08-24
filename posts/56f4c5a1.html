@@ -16,13 +16,12 @@
 <meta property="og:site_name" content="Evan">
 <meta property="og:description" content="本文记录一些 CentOS 7 工作中用到优化配置项，整理备忘并分享出来，便于各位看官参阅！">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://toko.v53922.com:7060/20190428/oldkernel.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/oldkernel.png">
-<meta property="og:updated_time" content="2020-08-21T08:23:59.645Z">
+<meta property="og:updated_time" content="2020-08-24T07:51:59.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS 7 一些优化配置备忘">
 <meta name="twitter:description" content="本文记录一些 CentOS 7 工作中用到优化配置项，整理备忘并分享出来，便于各位看官参阅！">
-<meta name="twitter:image" content="http://toko.v53922.com:7060/20190428/oldkernel.png">
+<meta name="twitter:image" content="http://toko.v53922.com:7060/20200407/oldkernel.png">
   
   
     <link rel="icon" href="/img/xhren.jpg">
@@ -230,23 +229,7 @@ var _hmt = _hmt || [];
 <a id="more"></a>
 <h2 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 查询yum是否安装过某软件</span><br><span class="line">yum list installed | grep php</span><br><span class="line"></span><br><span class="line"># 查询yum可用仓库</span><br><span class="line">yum repolist 或 yum repolist enabled  </span><br><span class="line">(显示所有仓库:yum repolist all)</span><br><span class="line"></span><br><span class="line">保存yum下载的rpm包</span><br><span class="line">修改配置文件 /etc/yum.conf ，将keepcache=0 改为keepcache=1，这样yum安装时，所下载的rpm包会保存在/var/cache/yum/$basearch/$releasever</span><br><span class="line"></span><br><span class="line">清华CentOS yum bash源 参考https://mirror.tuna.tsinghua.edu.cn/help/centos/</span><br><span class="line">清华CentOS yum epel源 参考https://mirror.tuna.tsinghua.edu.cn/help/epel/</span><br><span class="line"></span><br><span class="line">更换源后只需 yum update &amp;&amp; yum upgrade</span><br></pre></td></tr></table></figure>
 <h2 id="清除旧内核"><a href="#清除旧内核" class="headerlink" title="清除旧内核"></a>清除旧内核</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">uname -r #查询当前使用的系统</span><br><span class="line">grub2-editenv list  </span><br><span class="line">rpm -qa | grep kernel</span><br><span class="line">cat /boot/grub2/grub.cfg |grep &quot;menuentry&quot;</span><br><span class="line"></span><br><span class="line">yum remove 你要删除的内核 #把老版本的内核remove，千万不要把正在使用的内核删掉</span><br><span class="line"></span><br><span class="line">grub2-mkconfig -o /boot/grub2/grub.cfg #重新编译引导</span><br><span class="line"></span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
-<h1 id=""><a href="#" class="headerlink" title=""></a><img src="http://toko.v53922.com:7060/20190428/oldkernel.png" alt="OldKernel.png"></h1><p><img src="http://toko.v53922.com:7060/20200407/oldkernel.png" alt="OldKernel.png"></p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>4265ded940122e851b1df522b7aac131b81596e1</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
+<p><img src="http://toko.v53922.com:7060/20200407/oldkernel.png" alt="OldKernel.png"></p>
 <h2 id="彻底关闭ipv6"><a href="#彻底关闭ipv6" class="headerlink" title="彻底关闭ipv6"></a>彻底关闭ipv6</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">编辑/etc/default/grub，在GRUB_CMDLINE_LINUX加上的后面句首加上ipv6.disable=1</span><br><span class="line">修改完毕后保存，运行grub2-mkconfig -o /boot/grub2/grub.cfg重新生成grub.cfg文件</span><br><span class="line">reboot重启 </span><br><span class="line">运行lsmod|grep ipv6，可以看到ipv6已经关闭。</span><br></pre></td></tr></table></figure>
 <p><a href="https://blog.csdn.net/rznice/article/details/54016689?utm_source=blogxgwz0" rel="external nofollow noopener noreferrer" target="_blank">参考</a></p>
 <h2 id="静态IP"><a href="#静态IP" class="headerlink" title="静态IP"></a>静态IP</h2><p>$ vim /etc/sysconfig/network-scripts/ifcfg-ens192<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">TYPE=&quot;Ethernet&quot;</span><br><span class="line">PROXY_METHOD=&quot;none&quot;</span><br><span class="line">BROWSER_ONLY=&quot;no&quot;</span><br><span class="line">BOOTPROTO=&quot;static&quot;</span><br><span class="line">DEFROUTE=&quot;yes&quot;</span><br><span class="line">IPV4_FAILURE_FATAL=&quot;no&quot;</span><br><span class="line">IPV6INIT=&quot;no&quot;</span><br><span class="line">NAME=&quot;ens192&quot;</span><br><span class="line">DEVICE=&quot;ens192&quot;</span><br><span class="line">ONBOOT=&quot;yes&quot;</span><br><span class="line">IPADDR=&quot;192.168.1.21&quot;</span><br><span class="line">PREFIX=&quot;24&quot;</span><br><span class="line">GATEWAY=&quot;192.168.1.1&quot;</span><br><span class="line">DNS1=&quot;202.106.0.20&quot;</span><br></pre></td></tr></table></figure></p>
@@ -441,8 +424,8 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#yum"><span class="toc-number">1.</span> <span class="toc-text">yum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#清除旧内核"><span class="toc-number">2.</span> <span class="toc-text">清除旧内核</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number"></span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#彻底关闭ipv6"><span class="toc-number">1.</span> <span class="toc-text">彻底关闭ipv6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态IP"><span class="toc-number">2.</span> <span class="toc-text">静态IP</span></a></li></ol>
-                    </li></div>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#yum"><span class="toc-number">1.</span> <span class="toc-text">yum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#清除旧内核"><span class="toc-number">2.</span> <span class="toc-text">清除旧内核</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#彻底关闭ipv6"><span class="toc-number">3.</span> <span class="toc-text">彻底关闭ipv6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态IP"><span class="toc-number">4.</span> <span class="toc-text">静态IP</span></a></li></ol>
+                    </div>
                 </span>
             </div>
         </div>

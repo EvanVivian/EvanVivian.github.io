@@ -16,13 +16,12 @@
 <meta property="og:site_name" content="Evan">
 <meta property="og:description" content="MySQL 是很流行的关系型数据库管理系统，此文整理几种安装方式便于备忘及分享。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://toko.v53922.com:7060/20190428/mysql57mi.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/mysql57mi.png">
-<meta property="og:updated_time" content="2020-08-21T08:23:59.645Z">
+<meta property="og:updated_time" content="2020-08-24T07:51:59.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL安装">
 <meta name="twitter:description" content="MySQL 是很流行的关系型数据库管理系统，此文整理几种安装方式便于备忘及分享。">
-<meta name="twitter:image" content="http://toko.v53922.com:7060/20190428/mysql57mi.png">
+<meta name="twitter:image" content="http://toko.v53922.com:7060/20200407/mysql57mi.png">
   
   
     <link rel="icon" href="/img/xhren.jpg">
@@ -257,31 +256,12 @@ var _hmt = _hmt || [];
 <li><p>CentOS 7.5 安装MySQL 5.7</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#卸载原生MariaDB</span><br><span class="line">rpm -qa|grep mariadb</span><br><span class="line">rpm -e --nodeps mariadb-libs-5.5.44-2.el7.centos.x86_64</span><br><span class="line"></span><br><span class="line">yum安装mysql</span><br><span class="line">wget -c https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm</span><br><span class="line">yum -y install mysql57-community-release-el7-11.noarch.rpm</span><br><span class="line">yum repolist enabled | grep &quot;mysql.*-community.*&quot;</span><br><span class="line">yum -y install mysql-community-server</span><br><span class="line">systemctl status mysqld</span><br><span class="line">systemctl start mysqld</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>MySQL 5.7找回默认随机密码<br><code>grep &quot;temporary password&quot; /var/log/mysqld.log</code><br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
-<h1 id=""><a href="#" class="headerlink" title=""></a><img src="http://toko.v53922.com:7060/20190428/mysql57mi.png" alt="mysql57mi.png"></h1><p><img src="http://toko.v53922.com:7060/20200407/mysql57mi.png" alt="mysql57mi.png"></p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>4265ded940122e851b1df522b7aac131b81596e1</p>
+<li><p>MySQL 5.7找回默认随机密码<br><code>grep &quot;temporary password&quot; /var/log/mysqld.log</code><br><img src="http://toko.v53922.com:7060/20200407/mysql57mi.png" alt="mysql57mi.png"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -uroot -p</span><br><span class="line">Enter password:  (输入 `n2pK-+*K(oz)` 此处看不到输入的具体密码)</span><br><span class="line"></span><br><span class="line">SET PASSWORD = PASSWORD(&apos;Your_New_Password&apos;);</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
 </li>
 <li><p>二进制安装包的安装方式这里就不做介绍了，请自行百度或Google</p>
 </li>
 </ul>
-<blockquote>
-<p>yum安装补充，如果yum下载MySQL安装包网速堪忧，可通过<code>https://cdn.mysql.com//Downloads/MySQL-5.7/</code> +包名的方式 在网络相对较好的环境上下载后再传入需要安装的服务器上</p>
-</blockquote>
 
       
 
@@ -473,8 +453,8 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL-5-7-25-编译安装"><span class="toc-number">1.</span> <span class="toc-text">MySQL 5.7.25 编译安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩展"><span class="toc-number">2.</span> <span class="toc-text">扩展</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number"></span> <span class="toc-text"></span></a>
-                    </li></div>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL-5-7-25-编译安装"><span class="toc-number">1.</span> <span class="toc-text">MySQL 5.7.25 编译安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩展"><span class="toc-number">2.</span> <span class="toc-text">扩展</span></a></li></ol>
+                    </div>
                 </span>
             </div>
         </div>

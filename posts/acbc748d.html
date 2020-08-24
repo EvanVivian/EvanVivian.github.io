@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Evan">
 <meta property="og:description" content="nginx配置文件">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-08-21T08:23:59.645Z">
+<meta property="og:updated_time" content="2020-08-24T07:51:59.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx.conf">
 <meta name="twitter:description" content="nginx配置文件">
@@ -253,9 +253,6 @@ var _hmt = _hmt || [];
 <li><a href="http://www.conf" rel="external nofollow noopener noreferrer" target="_blank">www.conf</a></li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  itchao.com;</span><br><span class="line">    root   html/;</span><br><span class="line">    index  index.php index.html index.htm;</span><br><span class="line">    </span><br><span class="line">    access_log  logs/www_access.log main;</span><br><span class="line">    </span><br><span class="line">    location ~ \.(php|php5)?$ &#123;</span><br><span class="line">        fastcgi_pass  127.0.0.1:9000;</span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        include fastcgi.conf;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>nginx日志中的两种时间格式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$time_iso8601        生成格式： 2013-09-25T15:16:35+08:00</span><br><span class="line">$time_local          生成格式： 25/Sep/2013:15:12:13 +0800</span><br></pre></td></tr></table></figure></li>
-</ul>
 
       
 

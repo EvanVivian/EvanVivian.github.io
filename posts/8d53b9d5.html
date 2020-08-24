@@ -16,37 +16,24 @@
 <meta property="og:site_name" content="Evan">
 <meta property="og:description" content="虽然本人现在多数时间使用的是Linux或Mac系统，也比较推荐Mac系统。但不可否认的是Windows系统的生态确实要比Mac及Linux完善，而且win10的UI也还不错，bug及蓝屏也没那么多了。所以本人还是比较喜欢折腾win10系统的。本文着重点是精简win10自带的杀毒软件Windows Defender(使用体验非常不好，经常误杀和谐软件)，并删除不常用的win10推广软件(保留win1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://toko.v53922.com:7060/20190428/win10appjj.png">
-<meta property="og:image" content="http://toko.v53922.com:7060/20190428/winsysapps.png">
-<meta property="og:image" content="http://toko.v53922.com:7060/20190428/win10prodir.png">
-<meta property="og:image" content="http://toko.v53922.com:7060/20190428/win10prox86dir.png">
-<meta property="og:image" content="http://toko.v53922.com:7060/20190428/win10prodatamicr.png">
-<meta property="og:image" content="http://toko.v53922.com:7060/20190428/win10uevdir.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/win10appjj.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/winsysapps.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/win10prodir.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/win10prox86dir.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/win10prodatamicr.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/win10uevdir.png">
-<meta property="og:image" content="http://toko.v53922.com:7060/20190428/win10jh.png">
-<meta property="og:image" content="http://toko.v53922.com:7060/20190428/win10version.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/win10jh.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/win10version.png">
-<meta property="og:image" content="http://toko.v53922.com:7060/20190428/win10kaisjy.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/win10kaisjy.png">
-<meta property="og:image" content="http://toko.v53922.com:7060/20190428/win10storesz.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/win10storesz.png">
-<meta property="og:image" content="http://toko.v53922.com:7060/20190428/win10jjhapps.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/win10jjhapps.png">
-<meta property="og:image" content="http://toko.v53922.com:7060/20190428/win10swap.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/win10swap.png">
-<meta property="og:image" content="http://toko.v53922.com:7060/20190428/win10pekjhs.png">
 <meta property="og:image" content="http://toko.v53922.com:7060/20200407/win10pekjhs.png">
-<meta property="og:updated_time" content="2020-08-21T08:23:59.649Z">
+<meta property="og:updated_time" content="2020-08-24T07:51:59.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows 10 1809精简优化">
 <meta name="twitter:description" content="虽然本人现在多数时间使用的是Linux或Mac系统，也比较推荐Mac系统。但不可否认的是Windows系统的生态确实要比Mac及Linux完善，而且win10的UI也还不错，bug及蓝屏也没那么多了。所以本人还是比较喜欢折腾win10系统的。本文着重点是精简win10自带的杀毒软件Windows Defender(使用体验非常不好，经常误杀和谐软件)，并删除不常用的win10推广软件(保留win1">
-<meta name="twitter:image" content="http://toko.v53922.com:7060/20190428/win10appjj.png">
+<meta name="twitter:image" content="http://toko.v53922.com:7060/20200407/win10appjj.png">
   
   
     <link rel="icon" href="/img/xhren.jpg">
@@ -256,136 +243,21 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>注意：系统盘是MBR还是GAT格式,一定要分清楚，启动格式是BIOS还是UEFI跟磁盘格式有关。</p>
 </blockquote>
-<h2 id="安装前精简-不重装系统的也需要在PE内精简）"><a href="#安装前精简-不重装系统的也需要在PE内精简）" class="headerlink" title="安装前精简(不重装系统的也需要在PE内精简）"></a>安装前精简(不重装系统的也需要在PE内精简）</h2><p>PE系统内打开还原后的系统分区，进入C:\Program Files\WindowsApps 文件夹，删除以下列表之外的文件夹。<br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<br><img src="http://toko.v53922.com:7060/20190428/win10appjj.png" alt="win10appJj.png"><br>不重装系统的还需保留（MovedPackages、DeletedAllUserPackages）两个文件夹，这两个文件夹内的数据可以删除<br>进入C:\Windows\SystemApps 文件夹,精简参考下图。不重装系统的不执行此精简<br><img src="http://toko.v53922.com:7060/20190428/winsysapps.png" alt="WinSySApps.png"></p>
+<h2 id="安装前精简-不重装系统的也需要在PE内精简）"><a href="#安装前精简-不重装系统的也需要在PE内精简）" class="headerlink" title="安装前精简(不重装系统的也需要在PE内精简）"></a>安装前精简(不重装系统的也需要在PE内精简）</h2><p>PE系统内打开还原后的系统分区，进入C:\Program Files\WindowsApps 文件夹，删除以下列表之外的文件夹。<br><img src="http://toko.v53922.com:7060/20200407/win10appjj.png" alt="win10appJj.png"><br>不重装系统的还需保留（MovedPackages、DeletedAllUserPackages）两个文件夹，这两个文件夹内的数据可以删除<br>进入C:\Windows\SystemApps 文件夹,精简参考下图。不重装系统的不执行此精简<br><img src="http://toko.v53922.com:7060/20200407/winsysapps.png" alt="WinSySApps.png"></p>
 <hr>
-<p>其他几个目录精简后的样子，请参照下列图片精简。<br><img src="http://toko.v53922.com:7060/20190428/win10prodir.png" alt="win10ProDir.png"><br><img src="http://toko.v53922.com:7060/20190428/win10prox86dir.png" alt="win10ProX86Dir.png"><br><img src="http://toko.v53922.com:7060/20190428/win10prodatamicr.png" alt="win10ProDataMicr.png"></p>
-<h1 id=""><a href="#" class="headerlink" title=""></a><img src="http://toko.v53922.com:7060/20190428/win10uevdir.png" alt="win10UEVdir.png"></h1><p><img src="http://toko.v53922.com:7060/20200407/win10appjj.png" alt="win10appJj.png"><br>不重装系统的还需保留（MovedPackages、DeletedAllUserPackages）两个文件夹，这两个文件夹内的数据可以删除<br>进入C:\Windows\SystemApps 文件夹,精简参考下图。不重装系统的不执行此精简<br><img src="http://toko.v53922.com:7060/20200407/winsysapps.png" alt="WinSySApps.png"></p>
-<hr>
-<p>其他几个目录精简后的样子，请参照下列图片精简。<br><img src="http://toko.v53922.com:7060/20200407/win10prodir.png" alt="win10ProDir.png"><br><img src="http://toko.v53922.com:7060/20200407/win10prox86dir.png" alt="win10ProX86Dir.png"><br><img src="http://toko.v53922.com:7060/20200407/win10prodatamicr.png" alt="win10ProDataMicr.png"><br><img src="http://toko.v53922.com:7060/20200407/win10uevdir.png" alt="win10UEVdir.png"></p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>4265ded940122e851b1df522b7aac131b81596e1<br>安装前精简步骤进行完后，拔掉PE盘重启开始安装系统，用户选项为创建脱机用户，可以不设置密码。建议登录系统后解禁administrator用户注销首登用户，首登用户可以随意创建。</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<h2 id="安装后精简"><a href="#安装后精简" class="headerlink" title="安装后精简"></a>安装后精简</h2><p>注销首登用户使用administrator用户登录win10系统，删除首登用户及其家目录。下载<a href="https://www.lanzous.com/i1scasj" rel="external nofollow noopener noreferrer" target="_blank">Uninstall-Windows-Defender_v2018.9.02</a>,使用教程请参考<a href="https://www.yipojie.cn/3650.html" rel="external nofollow noopener noreferrer" target="_blank">WIN10彻底精简删除Windows Defener</a><br>删除完Windows Defener后，下载<a href="https://allres.ctfile.com/dir/4028457-28404093-5e20f9/" rel="external nofollow noopener noreferrer" target="_blank">W10数字许可C#版v2.8.0</a>或<a href="https://u17401394.pipipan.com/dir/17401394-28392918-0d0e06/" rel="external nofollow noopener noreferrer" target="_blank">Win10 数字权利激活工具 HWIDGen v51.15</a>解压，右键以管理员身份运行 激活win10 系统<br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<br><img src="http://toko.v53922.com:7060/20190428/win10jh.png" alt="Win10jh.png"></p>
-<p>设置 —&gt; 更新和安全 —&gt; Windows 更新<br>检查更新并更新系统 （OS内部信息号 17763.1 更新为 17763.55 Date：2018/11/05）</p>
-<h1 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="http://toko.v53922.com:7060/20190428/win10version.png" alt="win10version.png"></h1><p><img src="http://toko.v53922.com:7060/20200407/win10jh.png" alt="Win10jh.png"></p>
+<p>其他几个目录精简后的样子，请参照下列图片精简。<br><img src="http://toko.v53922.com:7060/20200407/win10prodir.png" alt="win10ProDir.png"><br><img src="http://toko.v53922.com:7060/20200407/win10prox86dir.png" alt="win10ProX86Dir.png"><br><img src="http://toko.v53922.com:7060/20200407/win10prodatamicr.png" alt="win10ProDataMicr.png"><br><img src="http://toko.v53922.com:7060/20200407/win10uevdir.png" alt="win10UEVdir.png"><br>安装前精简步骤进行完后，拔掉PE盘重启开始安装系统，用户选项为创建脱机用户，可以不设置密码。建议登录系统后解禁administrator用户注销首登用户，首登用户可以随意创建。</p>
+<h2 id="安装后精简"><a href="#安装后精简" class="headerlink" title="安装后精简"></a>安装后精简</h2><p>注销首登用户使用administrator用户登录win10系统，删除首登用户及其家目录。下载<a href="https://www.lanzous.com/i1scasj" rel="external nofollow noopener noreferrer" target="_blank">Uninstall-Windows-Defender_v2018.9.02</a>,使用教程请参考<a href="https://www.yipojie.cn/3650.html" rel="external nofollow noopener noreferrer" target="_blank">WIN10彻底精简删除Windows Defener</a><br>删除完Windows Defener后，下载<a href="https://allres.ctfile.com/dir/4028457-28404093-5e20f9/" rel="external nofollow noopener noreferrer" target="_blank">W10数字许可C#版v2.8.0</a>或<a href="https://u17401394.pipipan.com/dir/17401394-28392918-0d0e06/" rel="external nofollow noopener noreferrer" target="_blank">Win10 数字权利激活工具 HWIDGen v51.15</a>解压，右键以管理员身份运行 激活win10 系统<br><img src="http://toko.v53922.com:7060/20200407/win10jh.png" alt="Win10jh.png"></p>
 <p>设置 —&gt; 更新和安全 —&gt; Windows 更新<br>检查更新并更新系统 （OS内部信息号 17763.1 更新为 17763.55 Date：2018/11/05）<br><img src="http://toko.v53922.com:7060/20200407/win10version.png" alt="win10version.png"></p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>4265ded940122e851b1df522b7aac131b81596e1</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
 <p>设置 —&gt; 应用 —&gt; 程序和功能 —&gt; 启用或关闭 Windows 功能<br>取消勾选(删除) Inetrnet Explorer 11<br>取消勾选(删除) 媒体功能</p>
-<p>设置 —&gt; 个性化 —&gt; 开始<br>关闭 偶尔在”开始“菜单中显示建议<br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
-<h1 id="-2"><a href="#-2" class="headerlink" title=""></a><img src="http://toko.v53922.com:7060/20190428/win10kaisjy.png" alt="win10kaisjy.png"></h1><p><img src="http://toko.v53922.com:7060/20200407/win10kaisjy.png" alt="win10kaisjy.png"></p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>4265ded940122e851b1df522b7aac131b81596e1</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>Microsoft Store —&gt; 设置<br>关闭自动更新应用<br>关闭自动播放视频<br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
-<h1 id="-3"><a href="#-3" class="headerlink" title=""></a><img src="http://toko.v53922.com:7060/20190428/win10storesz.png" alt="win10storesz.png"></h1><p><img src="http://toko.v53922.com:7060/20200407/win10storesz.png" alt="win10storesz.png"></p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>4265ded940122e851b1df522b7aac131b81596e1</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
+<p>设置 —&gt; 个性化 —&gt; 开始<br>关闭 偶尔在”开始“菜单中显示建议<br><img src="http://toko.v53922.com:7060/20200407/win10kaisjy.png" alt="win10kaisjy.png"></p>
+<p>Microsoft Store —&gt; 设置<br>关闭自动更新应用<br>关闭自动播放视频<br><img src="http://toko.v53922.com:7060/20200407/win10storesz.png" alt="win10storesz.png"></p>
 <p>删除 Windows文件资源管理器左边栏 重复盘符<br>win + R 或 右键开始菜单选择 运行(R)<br>输入regedit 确定 打开注册表编辑器<br>计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders<br>删除{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}</p>
 <p>删除 Windows文件资源管理器左边栏 6个文件夹（桌面、文档、视频、下载、音乐、图片）<br>计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace<br>删除 DelegateFolders 以外的所有文件夹</p>
-<p>右键开始菜单选择 以管理员身份运行 Power Shell<br>执行 Get-AppxPackage |select Name, PackageFullName, InstallLocation<br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
-<h1 id="-4"><a href="#-4" class="headerlink" title=""></a><img src="http://toko.v53922.com:7060/20190428/win10jjhapps.png" alt="win10jjhapps.png"></h1><p><img src="http://toko.v53922.com:7060/20200407/win10jjhapps.png" alt="win10jjhapps.png"></p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>4265ded940122e851b1df522b7aac131b81596e1</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
+<p>右键开始菜单选择 以管理员身份运行 Power Shell<br>执行 Get-AppxPackage |select Name, PackageFullName, InstallLocation<br><img src="http://toko.v53922.com:7060/20200407/win10jjhapps.png" alt="win10jjhapps.png"></p>
 <p>未重装系统的朋友可能会多出很多APP 但 InstallLocation 列 没有内容<br>那就需要把这些没InstallLocation （安装地址） 的APP 删除<br>Remove-AppxPackage “PackageFullName“<br>比如删除 WindowsStore （当然只是打个比方）<br>Remove-AppxPackage Microsoft.WindowsStore_11809.1001.8.0_x64__8wekyb3d8bbwe<br>依次删除没有 InstallLocation 的app</p>
 <p>删除Windows10休眠文件hiberfil.sys<br>PowerShell命令窗口中输入 powercfg -h off<br>即可关闭休眠功能，同时 Hiberfil.sys 文件也会自动删除</p>
-<p>关闭swap<br>右键此电脑 —&gt; 属性 —&gt; 高级系统设置  –&gt; 高级<br>性能 —&gt; 设置 —&gt; 高级 —&gt; 更改<br>无分页文件 — 设置 —&gt; 确定<br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
-<h1 id="-5"><a href="#-5" class="headerlink" title=""></a><img src="http://toko.v53922.com:7060/20190428/win10swap.png" alt="win10swap.png"></h1><p><img src="http://toko.v53922.com:7060/20200407/win10swap.png" alt="win10swap.png"></p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>4265ded940122e851b1df522b7aac131b81596e1</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<h2 id="再进-微PE-清理垃圾进行空间回收"><a href="#再进-微PE-清理垃圾进行空间回收" class="headerlink" title="再进 微PE 清理垃圾进行空间回收"></a>再进 微PE 清理垃圾进行空间回收</h2><p>插入PE启动盘重启进入微PE系统，打开Dism++专家模式<br>选择 Windows 10 Pro x64 —&gt; 打开回话<br>常用工具 — 空间回收<br>过期文件、系统相关、缓存文件、应用程序、临时文件   全部勾选扫描并清理<br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
-<h1 id="-6"><a href="#-6" class="headerlink" title=""></a><img src="http://toko.v53922.com:7060/20190428/win10pekjhs.png" alt="win10PEkjhs.png"></h1><p><img src="http://toko.v53922.com:7060/20200407/win10pekjhs.png" alt="win10PEkjhs.png"></p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>4265ded940122e851b1df522b7aac131b81596e1</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
+<p>关闭swap<br>右键此电脑 —&gt; 属性 —&gt; 高级系统设置  –&gt; 高级<br>性能 —&gt; 设置 —&gt; 高级 —&gt; 更改<br>无分页文件 — 设置 —&gt; 确定<br><img src="http://toko.v53922.com:7060/20200407/win10swap.png" alt="win10swap.png"></p>
+<h2 id="再进-微PE-清理垃圾进行空间回收"><a href="#再进-微PE-清理垃圾进行空间回收" class="headerlink" title="再进 微PE 清理垃圾进行空间回收"></a>再进 微PE 清理垃圾进行空间回收</h2><p>插入PE启动盘重启进入微PE系统，打开Dism++专家模式<br>选择 Windows 10 Pro x64 —&gt; 打开回话<br>常用工具 — 空间回收<br>过期文件、系统相关、缓存文件、应用程序、临时文件   全部勾选扫描并清理<br><img src="http://toko.v53922.com:7060/20200407/win10pekjhs.png" alt="win10PEkjhs.png"></p>
 <p>删除以下鸡肋软件<br>C:\Windows\System32\psr.exe                            步骤记录器<br>‪C:\Windows\System32\narrator.exe                       讲述人<br>‪C:\Windows\System32\osk.exe                            屏幕键盘<br>C:\Program Files\Windows NT\Accessories\wordpad.exe    写字板<br>C:\Windows\System32\WFS.exe                            传真扫描<br>C:\Windows\System32\quickassist.exe                    快速助手<br>C:\Windows\Speech\Common\sapisvr.exe                   语音识别<br>C:\Windows\System32\SecurityHealthSystray.exe          自带杀毒开启项<br>C:\Windows\syswow64\charmap.exe                        字符映射表<br>C:\Windows\system32\magnify.exe                        放大器<br>C:\Windows\SysWOW64\WindowsPowerShell                  PowerShell 32位</p>
 <p>删除开始菜单快捷方式<br>C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell (x86)<br>C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell ISE(x86)<br>C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Accessibility<br>等无用快捷方式</p>
 <p>至此精简优化完毕 ！！！感谢您的参阅</p>
@@ -590,8 +462,8 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-微PE-安装原版win10-1809系统"><span class="toc-number">1.</span> <span class="toc-text">使用 微PE 安装原版win10 1809系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装前精简-不重装系统的也需要在PE内精简）"><span class="toc-number">2.</span> <span class="toc-text">安装前精简(不重装系统的也需要在PE内精简）</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number"></span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装后精简"><span class="toc-number">1.</span> <span class="toc-text">安装后精简</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#-1"><span class="toc-number"></span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#-2"><span class="toc-number"></span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#-3"><span class="toc-number"></span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#-4"><span class="toc-number"></span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#-5"><span class="toc-number"></span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#再进-微PE-清理垃圾进行空间回收"><span class="toc-number">1.</span> <span class="toc-text">再进 微PE 清理垃圾进行空间回收</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#-6"><span class="toc-number"></span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#扩展-Choco-及-Fira-Code"><span class="toc-number">1.</span> <span class="toc-text">扩展 Choco 及 Fira Code</span></a></li></ol>
-                    </li></div>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-微PE-安装原版win10-1809系统"><span class="toc-number">1.</span> <span class="toc-text">使用 微PE 安装原版win10 1809系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装前精简-不重装系统的也需要在PE内精简）"><span class="toc-number">2.</span> <span class="toc-text">安装前精简(不重装系统的也需要在PE内精简）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装后精简"><span class="toc-number">3.</span> <span class="toc-text">安装后精简</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#再进-微PE-清理垃圾进行空间回收"><span class="toc-number">4.</span> <span class="toc-text">再进 微PE 清理垃圾进行空间回收</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩展-Choco-及-Fira-Code"><span class="toc-number">5.</span> <span class="toc-text">扩展 Choco 及 Fira Code</span></a></li></ol>
+                    </div>
                 </span>
             </div>
         </div>
